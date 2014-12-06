@@ -14,135 +14,229 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.mybatis</groupId>
-  <version>6.0.2-SNAPSHOT</version>
-  <artifactId>jpetstore</artifactId>
-  <packaging>war</packaging>
+	<groupId>org.mybatis</groupId>
+	<artifactId>jpetstore</artifactId>
+	<version>6.0.2-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-  <name>JPetStore Demo 6</name>
-  <url>http://www.mybatis.org</url>
+	<name>JPetStore Demo 6</name>
+	<description>Revised version of the traditional JPetStore application using MyBatis+Stripes+Spring
+	 adding modern IHM based based on a CSS framework and a JQuery framework</description>
 
-  <scm>
-    <url>http://github.com/mybatis/jpetstore</url>
-    <connection>scm:git:ssh://github.com/mybatis/jpetstore.git</connection>
-    <developerConnection>scm:git:git+ssh://git@github.com/mybatis/jpetstore.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-  <issueManagement>
-    <system>GitHub Issue Management</system>
-    <url>https://github.com/mybatis/jpetstore/issues</url>
-  </issueManagement>
-  <ciManagement>
-    <system>Travis CI</system>
-    <url>https://travis-ci.org/jpetstore/guice</url>
-  </ciManagement>
-  <distributionManagement>
-    <site>
-      <id>github</id>
-      <url>gitsite:git@github.com/mybatis/jpetstore.git</url>
-    </site>
-  </distributionManagement>
-  <dependencies>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.2.7</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.2.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>4.0.1.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>4.0.1.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>net.sourceforge.stripes</groupId>
-      <artifactId>stripes</artifactId>
-      <version>1.5.7-classloaderfix</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.sun</groupId>
-          <artifactId>tools</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.jms</groupId>
-          <artifactId>jms</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.sun.jdmk</groupId>
-          <artifactId>jmxtools</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.sun.jmx</groupId>
-          <artifactId>jmxri</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <version>2.3.2</version>
-    </dependency>
-  </dependencies>
+	<prerequisites>
+		<maven>3.2.3</maven>
+	</prerequisites>
 
-  <build>
-    <finalName>jpetstore</finalName>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <configuration>
-          <overwrite>true</overwrite>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat6-maven-plugin</artifactId>
-          <version>2.2</version>
-      </plugin>
-      <plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat7-maven-plugin</artifactId>
-          <version>2.2</version>
-      </plugin>
-    </plugins>
-  </build>
+	<scm>
+		<url>https://github.com/zartc/jpetstore-6</url>
+		<connection>scm:git:ssh://github.com/zartc/jpetstore-6.git</connection>
+		<developerConnection>scm:git:git+ssh://git@github.com/zartc/jpetstore-6.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
+	<issueManagement>
+		<system>GitHub Issue Management</system>
+		<url>https://github.com/zartc/jpetstore-6/issues</url>
+	</issueManagement>
+
+	<distributionManagement>
+		<site>
+			<id>github</id>
+			<url>gitsite:git@github.com/zartc/jpetstore-6.git</url>
+		</site>
+	</distributionManagement>
+
+	<properties>
+		<java.version>1.7</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<stripes.version>1.5.8</stripes.version>
+		<spring.version>4.1.2.RELEASE</spring.version>
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<hsqldb.version>2.3.2</hsqldb.version>
+		
+		<servlet.version>2.5</servlet.version>
+		<jsp.version>2.1</jsp.version>
+		<jstl.version>1.2</jstl.version>
+		
+		<log4j.version>2.1</log4j.version>
+	</properties>
+
+	<dependencies>
+		<!-- commodities and utilities like apache commons, logging, servlet/jsp/jstl  
+		should come high in the list to force Maven to use the specified version. -->
+		
+		<!-- commons -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+
+		<!-- log4j -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+			<version>${log4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+ 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet.jsp</groupId> -->
+<!-- 			<artifactId>jsp-api</artifactId> -->
+<!-- 			<version>${jsp.version}</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet.jsp.jstl</groupId> -->
+<!-- 			<artifactId>jstl-api</artifactId> -->
+<!-- 			<version>${jstl.version}</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+
+
+		<dependency>
+			<groupId>net.sourceforge.stripes</groupId>
+			<artifactId>stripes</artifactId>
+			<version>${stripes.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun</groupId>
+					<artifactId>tools</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+
+
+		<!-- testing -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.7</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-assert-core</artifactId>
+			<version>2.0M10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.8</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<overwrite>true</overwrite>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat6-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
