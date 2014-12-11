@@ -74,9 +74,10 @@ public class Cart implements Serializable {
 		if (cartItem == null) {
 			return null;
 		}
-
-		itemList.remove(cartItem);
-		return cartItem.getItem();
+		else {
+			itemList.remove(cartItem);
+			return cartItem.getItem();
+		}
 	}
 	
 	public void incrementQuantityByItemId(String itemId) {
@@ -96,10 +97,13 @@ public class Cart implements Serializable {
 			CartItem cartItem = items.next();
 			Item item = cartItem.getItem();
 			BigDecimal listPrice = item.getListPrice();
-			BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));
+			BigDecimal quantity = new BigDecimal(String.valueOf(cartItem
+					.getQuantity()));
 			subTotal = subTotal.add(listPrice.multiply(quantity));
 		}
 		return subTotal;
 	}
 	
 }
+
+/* EOF */

@@ -35,30 +35,31 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CatalogService {
-
+	
 	@Inject
 	private CategoryMapper categoryMapper;
 	@Inject
 	private ItemMapper itemMapper;
 	@Inject
 	private ProductMapper productMapper;
-
+	
+	
 	public List<Category> getCategoryList() {
 		return categoryMapper.getCategoryList();
 	}
-
+	
 	public Category getCategory(String categoryId) {
 		return categoryMapper.getCategory(categoryId);
 	}
-
+	
 	public Product getProduct(String productId) {
 		return productMapper.getProduct(productId);
 	}
-
+	
 	public List<Product> getProductListByCategory(String categoryId) {
 		return productMapper.getProductListByCategory(categoryId);
 	}
-
+	
 	public List<Product> searchProductList(String keywords) {
 		List<Product> products = new ArrayList<>();
 		for (String keyword : keywords.split("\\s+")) {
@@ -66,16 +67,18 @@ public class CatalogService {
 		}
 		return products;
 	}
-
+	
 	public List<Item> getItemListByProduct(String productId) {
 		return itemMapper.getItemListByProduct(productId);
 	}
-
+	
 	public Item getItem(String itemId) {
 		return itemMapper.getItem(itemId);
 	}
-
+	
 	public boolean isItemInStock(String itemId) {
 		return itemMapper.getInventoryQuantity(itemId) > 0;
 	}
 }
+
+/* EOF */

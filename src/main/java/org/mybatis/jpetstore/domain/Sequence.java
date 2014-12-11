@@ -54,3 +54,5 @@ public class Sequence implements Serializable {
 	}
 	
 }
+
+/* EOF */

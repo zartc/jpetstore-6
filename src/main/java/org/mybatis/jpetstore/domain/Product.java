@@ -69,3 +69,5 @@ public class Product implements Serializable {
 	}
 	
 }
+
+/* EOF */

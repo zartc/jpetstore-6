@@ -194,3 +194,5 @@ public class Account implements Serializable {
 	}
 	
 }
+
+/* EOF */

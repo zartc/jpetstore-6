@@ -60,3 +60,5 @@ public class Category implements Serializable {
 	}
 	
 }
+
+/* EOF */

@@ -36,3 +36,5 @@ public interface ItemMapper {
 	Item getItem(String itemId);
 	
 }
+
+/* EOF */

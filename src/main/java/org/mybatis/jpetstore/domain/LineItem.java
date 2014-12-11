@@ -110,3 +110,5 @@ public class LineItem implements Serializable {
 	}
 	
 }
+
+/* EOF */

@@ -33,6 +33,7 @@ public class AccountService {
 	@Inject
 	private AccountMapper accountMapper;
 	
+	
 	public Account getAccount(String username) {
 		return accountMapper.getAccountByUsername(username);
 	}
@@ -59,3 +60,5 @@ public class AccountService {
 	}
 	
 }
+
+/* EOF */

@@ -77,3 +77,5 @@ public class CartItem implements Serializable {
 	}
 	
 }
+
+/* EOF */

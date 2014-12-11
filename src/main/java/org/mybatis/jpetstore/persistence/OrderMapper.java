@@ -35,3 +35,5 @@ public interface OrderMapper {
 	void insertOrderStatus(Order order);
 	
 }
+
+/* EOF */

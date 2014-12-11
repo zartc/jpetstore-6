@@ -141,12 +141,8 @@ public class OrderActionBean extends AbstractActionBean {
 			return new ForwardResolution(CONFIRM_ORDER);
 		}
 		else if (getOrder() != null) {
-			
 			orderService.insertOrder(order);
-			
-			CartActionBean cartBean = (CartActionBean)session.getAttribute("/actions/Cart.action");
-			cartBean.clear();
-			
+			((CartActionBean)session.getAttribute("/actions/Cart.action")).clear();
 			setMessage("Thank you, your order has been submitted.");
 			
 			return new ForwardResolution(VIEW_ORDER);
@@ -181,3 +177,5 @@ public class OrderActionBean extends AbstractActionBean {
 	}
 	
 }
+
+/* EOF */

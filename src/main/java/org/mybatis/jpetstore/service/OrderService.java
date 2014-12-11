@@ -61,7 +61,7 @@ public class OrderService {
 			param.put("increment", increment);
 			itemMapper.updateInventoryQuantity(param);
 		}
-
+		
 		orderMapper.insertOrder(order);
 		orderMapper.insertOrderStatus(order);
 		for (int i = 0; i < order.getLineItems().size(); i++) {
@@ -70,36 +70,37 @@ public class OrderService {
 			lineItemMapper.insertLineItem(lineItem);
 		}
 	}
-
+	
 	@Transactional
 	public Order getOrder(int orderId) {
 		Order order = orderMapper.getOrder(orderId);
 		order.setLineItems(lineItemMapper.getLineItemsByOrderId(orderId));
-
+		
 		for (int i = 0; i < order.getLineItems().size(); i++) {
 			LineItem lineItem = order.getLineItems().get(i);
 			Item item = itemMapper.getItem(lineItem.getItemId());
-			item.setQuantity(itemMapper.getInventoryQuantity(lineItem
-					.getItemId()));
+			item.setQuantity(itemMapper.getInventoryQuantity(lineItem.getItemId()));
 			lineItem.setItem(item);
 		}
-
+		
 		return order;
 	}
-
+	
 	public List<Order> getOrdersByUsername(String username) {
 		return orderMapper.getOrdersByUsername(username);
 	}
-
+	
 	public int getNextId(String name) {
 		Sequence sequence = new Sequence(name, -1);
 		sequence = sequenceMapper.getSequence(sequence);
-		if (sequence == null) { throw new RuntimeException(
-				"Error: A null sequence was returned from the database (could not get next "
-						+ name + " sequence)."); }
+		if (sequence == null) {
+			throw new RuntimeException("Error: A null sequence was returned from the database (could not get next " + name + " sequence).");
+		}
 		Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
 		sequenceMapper.updateSequence(parameterObject);
 		return sequence.getNextId();
 	}
-
+	
 }
+
+/* EOF */

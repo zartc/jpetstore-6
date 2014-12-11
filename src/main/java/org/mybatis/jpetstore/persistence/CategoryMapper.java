@@ -31,3 +31,5 @@ public interface CategoryMapper {
 	Category getCategory(String categoryId);
 	
 }
+
+/* EOF */

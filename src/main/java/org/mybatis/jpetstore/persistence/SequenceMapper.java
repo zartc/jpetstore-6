@@ -28,3 +28,5 @@ public interface SequenceMapper {
 	
 	void updateSequence(Sequence sequence);
 }
+
+/* EOF */

@@ -151,14 +151,15 @@ public class AccountActionBean extends AbstractActionBean {
 			clear();
 			return new ForwardResolution(SIGNON);
 		}
-
-		account.setPassword(null);
-		myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
-		authenticated = true;
-		HttpSession s = context.getRequest().getSession();
-		// this bean is already registered as /actions/Account.action
-		s.setAttribute("accountBean", this);
-		return new RedirectResolution(CatalogActionBean.class);
+		else {
+			account.setPassword(null);
+			myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+			authenticated = true;
+			HttpSession s = context.getRequest().getSession();
+			// this bean is already registered as /actions/Account.action
+			s.setAttribute("accountBean", this);
+			return new RedirectResolution(CatalogActionBean.class);
+		}
 	}
 	
 	public Resolution signoff() {
@@ -178,3 +179,5 @@ public class AccountActionBean extends AbstractActionBean {
 	}
 	
 }
+
+/* EOF */
