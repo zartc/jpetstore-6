@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" 
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-		 version="2.5">
-	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	version="2.5" metadata-complete="true">
+
 	<display-name>JPetStore</display-name>
 	<description>Online Pet Store Sample Application</description>
-	
+
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>StripesResources</param-value>
 	</context-param>
 	
-	<context-param> 
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/applicationContext.xml</param-value>
-	</context-param>
 	
+	<!-- Support for Log4j2 -->
+	<!-- 
+	You must take particular care when using Log4j or any other logging framework within a Java EE web application.
+	Log4j must be "started" when the web application deploys and "shut down" when the web application undeploys.
+	If you are using Log4j in a Servlet 2.5 web application, or if you have disabled auto-initialization with the
+	isLog4jAutoInitializationDisabled context parameter, you must configure the Log4jServletContextListener and 
+	Log4jServletFilter in the deployment descriptor or programmatically. The filter should match all requests of 
+	any type. The listener should be the very first listener defined in your application, and the filter should 
+	be the very first filter defined and mapped in your application. This is easily accomplished using the 
+	following web.xml code:
+	http://logging.apache.org/log4j/2.x/manual/webapp.html -->
+	<listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+
+	<!-- Support for Spring -->
+	<context-param>
+		<description>Configuration files for Spring's root WebApplicationContext, loaded via ContextLoaderListener</description>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext.xml
+            /WEB-INF/application-jdbc-context.xml
+<!--             /WEB-INF/application-security-context.xml -->
+		</param-value>
+	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
+
 	<filter>
 		<display-name>Stripes Filter</display-name>
 		<filter-name>StripesFilter</filter-name>
@@ -35,22 +70,19 @@
 			<param-value>net.sourceforge.stripes.integration.spring.SpringInterceptor</param-value>
 		</init-param>
 	</filter>
-	
 	<filter-mapping>
 		<filter-name>StripesFilter</filter-name>
 		<servlet-name>StripesDispatcher</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
-	
 	<servlet>
 		<servlet-name>StripesDispatcher</servlet-name>
 		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>StripesDispatcher</servlet-name>
 		<url-pattern>*.action</url-pattern>
 	</servlet-mapping>
-	
+
 </web-app>
