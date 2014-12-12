@@ -19,13 +19,14 @@ package org.mybatis.jpetstore.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.persistence.CategoryMapper;
 import org.mybatis.jpetstore.persistence.ItemMapper;
 import org.mybatis.jpetstore.persistence.ProductMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -35,11 +36,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CatalogService {
 	
-	@Autowired
+	@Inject
 	private CategoryMapper categoryMapper;
-	@Autowired
+	@Inject
 	private ItemMapper itemMapper;
-	@Autowired
+	@Inject
 	private ProductMapper productMapper;
 	
 	

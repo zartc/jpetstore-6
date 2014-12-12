@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.LineItem;
 import org.mybatis.jpetstore.domain.Order;
@@ -28,7 +30,6 @@ import org.mybatis.jpetstore.persistence.ItemMapper;
 import org.mybatis.jpetstore.persistence.LineItemMapper;
 import org.mybatis.jpetstore.persistence.OrderMapper;
 import org.mybatis.jpetstore.persistence.SequenceMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,13 +40,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class OrderService {
 	
-	@Autowired
+	@Inject
 	private ItemMapper itemMapper;
-	@Autowired
+	@Inject
 	private OrderMapper orderMapper;
-	@Autowired
+	@Inject
 	private SequenceMapper sequenceMapper;
-	@Autowired
+	@Inject
 	private LineItemMapper lineItemMapper;
 	
 	@Transactional
