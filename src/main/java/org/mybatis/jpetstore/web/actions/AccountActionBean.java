@@ -41,6 +41,8 @@ import org.mybatis.jpetstore.web.ApplicationPaths;
 @SessionScope
 public class AccountActionBean extends AbstractActionBean {
 	
+
+
 	private static final List<String> LANGUAGE_LIST;
 	private static final List<String> CATEGORY_LIST;
 	

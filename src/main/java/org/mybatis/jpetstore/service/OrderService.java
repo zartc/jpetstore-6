@@ -56,7 +56,7 @@ public class OrderService {
 			LineItem lineItem = order.getLineItems().get(i);
 			String itemId = lineItem.getItemId();
 			Integer increment = new Integer(lineItem.getQuantity());
-			Map<String, Object> param = new HashMap<String, Object>(2);
+			Map<String, Object> param = new HashMap<>(2);
 			param.put("itemId", itemId);
 			param.put("increment", increment);
 			itemMapper.updateInventoryQuantity(param);
@@ -93,8 +93,9 @@ public class OrderService {
 	public int getNextId(String name) {
 		Sequence sequence = new Sequence(name, -1);
 		sequence = sequenceMapper.getSequence(sequence);
-		if (sequence == null) { throw new RuntimeException(
-				"Error: A null sequence was returned from the database (could not get next " + name + " sequence)."); }
+		if (sequence == null) {
+			throw new RuntimeException("Error: A null sequence was returned from the database (could not get next " + name + " sequence).");
+		}
 		Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
 		sequenceMapper.updateSequence(parameterObject);
 		return sequence.getNextId();

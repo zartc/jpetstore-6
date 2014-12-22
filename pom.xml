@@ -64,6 +64,7 @@
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
 		
+		<!-- stay at servlet 2.5 / jsp 2.1 level -->
 		<servlet.version>2.5</servlet.version>
 		<jsp.version>2.1</jsp.version>
 		<jstl.version>1.2</jstl.version>
@@ -82,18 +83,20 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.3.2</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
 			<version>4.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
 
-		
+
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -102,7 +105,6 @@
 		</dependency>
 
 
-		<!-- log4j2 -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -139,25 +141,24 @@
 			<version>${jsp.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp.jstl</groupId>
-			<artifactId>jstl-api</artifactId>
+		<!-- there is at least 3 way to include JSTL dependance... -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet.jsp.jstl</groupId> -->
+<!-- 			<artifactId>jstl</artifactId> -->
+<!-- 			<version>${jstl.version}</version> -->
+<!-- 		</dependency> -->
+ 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>jstl-impl</artifactId>
-			<version>${jstl.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>servlet-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.glassfish.web</groupId> -->
+<!-- 			<artifactId>javax.servlet.jsp.jstl</artifactId> -->
+<!-- 			<version>1.2.3</version> -->
+<!-- 		</dependency> -->
 
-		
-		<!-- stripes -->
+
 		<dependency>
 			<groupId>net.sourceforge.stripes</groupId>
 			<artifactId>stripes</artifactId>
@@ -196,7 +197,6 @@
 					<groupId>commons-logging</groupId>
 				</exclusion>
 			</exclusions>
-		</dependency>
 
 		
 		<!-- myBatis -->
@@ -227,12 +227,14 @@
 			<version>6.7</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-assert-core</artifactId>
 			<version>2.0M10</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>

@@ -12,7 +12,7 @@
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>StripesResources</param-value>
 	</context-param>
-	
+
 	
 	<!-- Support for Log4j2 -->
 	<!-- 
@@ -69,11 +69,8 @@
 			<param-name>Interceptor.Classes</param-name>
 			<param-value>net.sourceforge.stripes.integration.spring.SpringInterceptor</param-value>
 		</init-param>
-		<init-param>
-			<param-name>Extension.Packages</param-name>
-			<param-value>com.samaxes.stripes.inject</param-value>
-		</init-param>
 	</filter>
+
 	<filter-mapping>
 		<filter-name>StripesFilter</filter-name>
 		<servlet-name>StripesDispatcher</servlet-name>
@@ -86,6 +83,7 @@
 		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>StripesDispatcher</servlet-name>
 		<url-pattern>*.action</url-pattern>

@@ -33,8 +33,7 @@ public class Cart implements Serializable {
 	
 	private static final long serialVersionUID = 8329559983943337176L;
 	
-	private final Map<String, CartItem> itemMap = Collections
-			.synchronizedMap(new HashMap<String, CartItem>());
+	private final Map<String, CartItem> itemMap = Collections.synchronizedMap(new HashMap<>());
 	private final List<CartItem> itemList = new ArrayList<>();
 	
 	public Iterator<CartItem> getCartItems() {
@@ -97,8 +96,7 @@ public class Cart implements Serializable {
 			CartItem cartItem = items.next();
 			Item item = cartItem.getItem();
 			BigDecimal listPrice = item.getListPrice();
-			BigDecimal quantity = new BigDecimal(String.valueOf(cartItem
-					.getQuantity()));
+			BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));
 			subTotal = subTotal.add(listPrice.multiply(quantity));
 		}
 		return subTotal;
