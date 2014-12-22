@@ -18,12 +18,13 @@ package org.mybatis.jpetstore.persistence;
 
 import org.mybatis.jpetstore.domain.Sequence;
 
+
 /**
  * @author Eduardo Macarron
- *
  */
 public interface SequenceMapper {
-
-  Sequence getSequence(Sequence sequence);
-  void updateSequence(Sequence sequence);
+	
+	Sequence getSequence(Sequence sequence);
+	
+	void updateSequence(Sequence sequence);
 }

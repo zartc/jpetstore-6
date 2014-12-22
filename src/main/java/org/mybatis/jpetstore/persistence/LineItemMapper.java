@@ -20,14 +20,14 @@ import java.util.List;
 
 import org.mybatis.jpetstore.domain.LineItem;
 
+
 /**
  * @author Eduardo Macarron
- *
  */
 public interface LineItemMapper {
-
-  List<LineItem> getLineItemsByOrderId(int orderId);
-
-  void insertLineItem(LineItem lineItem);
-
+	
+	List<LineItem> getLineItemsByOrderId(int orderId);
+	
+	void insertLineItem(LineItem lineItem);
+	
 }
