@@ -35,7 +35,7 @@ public class Cart implements Serializable {
 	
 	private final Map<String, CartItem> itemMap = Collections
 			.synchronizedMap(new HashMap<String, CartItem>());
-	private final List<CartItem> itemList = new ArrayList<CartItem>();
+	private final List<CartItem> itemList = new ArrayList<>();
 	
 	public Iterator<CartItem> getCartItems() {
 		return itemList.iterator();
@@ -75,10 +75,9 @@ public class Cart implements Serializable {
 		if (cartItem == null) {
 			return null;
 		}
-		else {
-			itemList.remove(cartItem);
-			return cartItem.getItem();
-		}
+		
+		itemList.remove(cartItem);
+		return cartItem.getItem();
 	}
 	
 	public void incrementQuantityByItemId(String itemId) {

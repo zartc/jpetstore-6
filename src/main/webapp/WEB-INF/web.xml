@@ -69,12 +69,18 @@
 			<param-name>Interceptor.Classes</param-name>
 			<param-value>net.sourceforge.stripes.integration.spring.SpringInterceptor</param-value>
 		</init-param>
+		<init-param>
+			<param-name>Extension.Packages</param-name>
+			<param-value>com.samaxes.stripes.inject</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>StripesFilter</filter-name>
 		<servlet-name>StripesDispatcher</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+	
+	
 	<servlet>
 		<servlet-name>StripesDispatcher</servlet-name>
 		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
