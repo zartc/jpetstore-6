@@ -18,7 +18,7 @@
 				<MarkerFilter marker="EXCEPTION" onMatch="ACCEPT" onMismatch="DENY"/>
 			</filters>
 			<!-- this pattern outputs class name and method name - this is slow -->
-			<PatternLayout pattern="%d{ABSOLUTE} [FLOW ] %class.%method %msg%n"/>
+			<PatternLayout pattern="%d{ABSOLUTE} FLOW  %class.%method %msg%n"/>
 		</Console>
 
 		<Console name="stdout" target="SYSTEM_OUT">
@@ -27,7 +27,7 @@
 				<MarkerFilter marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
 				<MarkerFilter marker="EXCEPTION" onMatch="DENY" onMismatch="NEUTRAL"/>
 			</filters>
-			<PatternLayout pattern="%d{ABSOLUTE} [%-5level] %50logger{5.} - %msg%xEx{filters(${filters})}%n"/>
+			<PatternLayout pattern="%d{ABSOLUTE} %-5level %50logger{5.} - %msg%xEx{filters(${filters})}%n"/>
 <!-- 			<PatternLayout pattern="%black{%d{ISO8601}} %blue{[%t]} %yellow{%-5level:} %green{%msg%n%throwable}"/> -->
 		</Console>
 	</Appenders>
