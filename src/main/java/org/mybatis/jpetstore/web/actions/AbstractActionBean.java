@@ -16,8 +16,6 @@
 
 package org.mybatis.jpetstore.web.actions;
 
-import java.io.Serializable;
-
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.SimpleMessage;
@@ -26,16 +24,13 @@ import net.sourceforge.stripes.action.SimpleMessage;
 /**
  * @author Eduardo Macarron
  */
-abstract class AbstractActionBean implements ActionBean, Serializable {
+abstract class AbstractActionBean implements ActionBean {
+	
+	private transient ActionBeanContext context;
+	
 
-	private static final long serialVersionUID = 1L;
-	
-	protected static final String ERROR = "/WEB-INF/jsp/common/Error.jsp";
-	
-	protected transient ActionBeanContext context;
-	
 	protected void setMessage(String value) {
-		context.getMessages().add(new SimpleMessage(value));
+		getContext().getMessages().add(new SimpleMessage(value));
 	}
   
 	@Override
@@ -44,7 +39,7 @@ abstract class AbstractActionBean implements ActionBean, Serializable {
 	}
 	
 	@Override
-	public void setContext(ActionBeanContext context) {
+	public void setContext(final ActionBeanContext context) {
 		this.context = context;
 	}
 	

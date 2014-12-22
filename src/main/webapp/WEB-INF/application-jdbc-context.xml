@@ -19,7 +19,9 @@
 		<jdbc:script location="classpath:database/jpetstore-hsqldb-dataload.sql" />
 	</jdbc:embedded-database>
 
-	<!-- define the transaction manager; Switch to JtaTransactionManager for global tx -->
+	<!-- define the transaction manager; 
+		use a DataSourceTransactionManager for local transaction;
+		use a JtaTransactionManager for global transaction -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>

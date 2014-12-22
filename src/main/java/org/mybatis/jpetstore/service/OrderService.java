@@ -39,7 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class OrderService {
-
+	
 	@Inject
 	private ItemMapper itemMapper;
 	@Inject
@@ -48,7 +48,7 @@ public class OrderService {
 	private SequenceMapper sequenceMapper;
 	@Inject
 	private LineItemMapper lineItemMapper;
-
+	
 	@Transactional
 	public void insertOrder(Order order) {
 		order.setOrderId(getNextId("ordernum"));

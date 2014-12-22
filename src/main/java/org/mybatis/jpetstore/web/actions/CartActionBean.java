@@ -29,6 +29,7 @@ import org.mybatis.jpetstore.domain.Cart;
 import org.mybatis.jpetstore.domain.CartItem;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.service.CatalogService;
+import org.mybatis.jpetstore.web.ApplicationPaths;
 
 
 /**
@@ -37,11 +38,8 @@ import org.mybatis.jpetstore.service.CatalogService;
 @SessionScope
 public class CartActionBean extends AbstractActionBean {
 	
-	private static final long serialVersionUID = -4038684592582714235L;
-	
-	private static final String VIEW_CART = "/WEB-INF/jsp/cart/Cart.jsp";
-	private static final String CHECK_OUT = "/WEB-INF/jsp/cart/Checkout.jsp";
-	
+
+
 	@SpringBean
 	private transient CatalogService catalogService;
 	
@@ -73,23 +71,22 @@ public class CartActionBean extends AbstractActionBean {
 			cart.addItem(item, isInStock);
 		}
 		
-		return new ForwardResolution(VIEW_CART);
+		return new ForwardResolution(ApplicationPaths.VIEW_CART);
 	}
 	
 	public Resolution removeItemFromCart() {
-		
 		Item item = cart.removeItemById(workingItemId);
 		
 		if (item == null) {
 			setMessage("Attempted to remove null CartItem from Cart.");
-			return new ForwardResolution(ERROR);
+			return new ForwardResolution(ApplicationPaths.ERROR);
 		}
-
-		return new ForwardResolution(VIEW_CART);
+		
+		return new ForwardResolution(ApplicationPaths.VIEW_CART);
 	}
-
+	
 	public Resolution updateCartQuantities() {
-		HttpServletRequest request = context.getRequest();
+		HttpServletRequest request = getContext().getRequest();
 		
 		Iterator<CartItem> cartItems = getCart().getAllCartItems();
 		while (cartItems.hasNext()) {
@@ -107,15 +104,15 @@ public class CartActionBean extends AbstractActionBean {
 			}
 		}
 		
-		return new ForwardResolution(VIEW_CART);
+		return new ForwardResolution(ApplicationPaths.VIEW_CART);
 	}
 	
 	public ForwardResolution viewCart() {
-		return new ForwardResolution(VIEW_CART);
+		return new ForwardResolution(ApplicationPaths.VIEW_CART);
 	}
 	
 	public ForwardResolution checkOut() {
-		return new ForwardResolution(CHECK_OUT);
+		return new ForwardResolution(ApplicationPaths.CHECK_OUT);
 	}
 	
 	public void clear() {

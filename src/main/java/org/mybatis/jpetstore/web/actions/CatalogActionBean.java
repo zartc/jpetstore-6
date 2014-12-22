@@ -27,6 +27,7 @@ import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.service.CatalogService;
+import org.mybatis.jpetstore.web.ApplicationPaths;
 
 
 /**
@@ -35,14 +36,8 @@ import org.mybatis.jpetstore.service.CatalogService;
 @SessionScope
 public class CatalogActionBean extends AbstractActionBean {
 	
-	private static final long serialVersionUID = 5849523372175050635L;
-	
-	private static final String MAIN = "/WEB-INF/jsp/catalog/Main.jsp";
-	private static final String VIEW_CATEGORY = "/WEB-INF/jsp/catalog/Category.jsp";
-	private static final String VIEW_PRODUCT = "/WEB-INF/jsp/catalog/Product.jsp";
-	private static final String VIEW_ITEM = "/WEB-INF/jsp/catalog/Item.jsp";
-	private static final String SEARCH_PRODUCTS = "/WEB-INF/jsp/catalog/SearchProducts.jsp";
-	
+
+
 	@SpringBean
 	private transient CatalogService catalogService;
 	
@@ -142,7 +137,7 @@ public class CatalogActionBean extends AbstractActionBean {
 	
 	@DefaultHandler
 	public ForwardResolution viewMain() {
-		return new ForwardResolution(MAIN);
+		return new ForwardResolution(ApplicationPaths.MAIN);
 	}
 	
 	public ForwardResolution viewCategory() {
@@ -150,7 +145,7 @@ public class CatalogActionBean extends AbstractActionBean {
 			productList = catalogService.getProductListByCategory(categoryId);
 			category = catalogService.getCategory(categoryId);
 		}
-		return new ForwardResolution(VIEW_CATEGORY);
+		return new ForwardResolution(ApplicationPaths.VIEW_CATEGORY);
 	}
 	
 	public ForwardResolution viewProduct() {
@@ -158,23 +153,23 @@ public class CatalogActionBean extends AbstractActionBean {
 			itemList = catalogService.getItemListByProduct(productId);
 			product = catalogService.getProduct(productId);
 		}
-		return new ForwardResolution(VIEW_PRODUCT);
+		return new ForwardResolution(ApplicationPaths.VIEW_PRODUCT);
 	}
 	
 	public ForwardResolution viewItem() {
 		item = catalogService.getItem(itemId);
 		product = item.getProduct();
-		return new ForwardResolution(VIEW_ITEM);
+		return new ForwardResolution(ApplicationPaths.VIEW_ITEM);
 	}
 	
 	public ForwardResolution searchProducts() {
 		if (keyword == null || keyword.length() < 1) {
 			setMessage("Please enter a keyword to search for, then press the search button.");
-			return new ForwardResolution(ERROR);
+			return new ForwardResolution(ApplicationPaths.ERROR);
 		}
 
 		productList = catalogService.searchProductList(keyword.toLowerCase());
-		return new ForwardResolution(SEARCH_PRODUCTS);
+		return new ForwardResolution(ApplicationPaths.SEARCH_PRODUCTS);
 	}
 
 	public void clear() {
