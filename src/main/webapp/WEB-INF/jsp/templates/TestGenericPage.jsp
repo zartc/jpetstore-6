@@ -9,11 +9,7 @@
 	<jsp:attribute name="header">
 		<h1>I'm the HEADER of the page</h1>
 	</jsp:attribute>
-	<jsp:attribute name="footer">
-		<p>I'm the FOOTER of the page</p>
-	</jsp:attribute>
 	<jsp:body>
 		<p>Hi I'm the CONTENT of the page</p>
-		<p>context path = ${pageContext.request.contextPath}</p>
 	</jsp:body>
 </my:genericpage>

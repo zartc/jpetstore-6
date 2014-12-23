@@ -1,8 +1,9 @@
-<%@ tag description="generic page template" pageEncoding="UTF-8" body-content="scriptless"%>
+<%@ tag description="generic page template" pageEncoding="UTF-8" body-content="scriptless" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ attribute name="title" fragment="false"%>
-<%@ attribute name="header" fragment="true"%>
-<%@ attribute name="footer" fragment="true"%>
+<%@ attribute name="title" fragment="false" %>
+<%@ attribute name="header" fragment="true" %>
+<%@ attribute name="footer" fragment="true" %>
 
 <%-- JSP-TEMPLATE --%>
 <%-- see: http://wiki4.caucho.com/Java_EE_Servlet_tutorial_:_Using_JSPs_to_create_header,_footer_area,_formatting,_and_basic_CSS_for_bookstore --%>
@@ -21,13 +22,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>${title}</title>
-
+	
+	<!-- begin stickyfooter -->
+	<link rel="stylesheet/less" type="text/css" href="${pageContext.request.contextPath}/css/stickyfooter.less" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.2/less.min.js"></script>
+	<!-- end stickyfooter -->
+	
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 <!-- 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/superhero/bootstrap.min.css" /> -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-	
-	<link rel="stylesheet/less" type="text/css" href="${pageContext.request.contextPath}/css/stickyfooter.less" />
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.2/less.min.js"></script>
 </head>
 
 <body>
@@ -63,7 +66,7 @@
 	</div>
 </nav>
 
-<div id="stf-wrapper">
+<div id="stf-viewport">
 	<div id="stf-header">
 		<div id="pageheader" class="container">
 			<jsp:invoke fragment="header" />
@@ -78,7 +81,35 @@
 	
 	<div id="stf-footer">
 		<div id="pagefooter" class="container">
-			<jsp:invoke fragment="footer" />
+			<c:if test="${empty footer}">
+				<style>
+					#stf-footer {
+						background-color: yellowgreen;
+					}
+					
+					#pagefooter {
+						vertical-align: middle;
+					}
+					
+					#pagefooter .linkbar .separator {
+						padding: 0 20px;
+					}
+				</style>
+				<span class="linkbar">
+					<a href="http://www.w3schools.com/html/default.asp" rel="help" target="_blank">w3schools</a>
+					<span class="separator">|</span>
+					<a href="http://en.wikipedia.org/wiki/Web_colors" rel="help" target="_blank">Web-colors</a>
+					<span class="separator">|</span>
+					<a href="http://getbootstrap.com/" rel="help" target="_blank">Bootstrap</a>
+					<span class="separator">|</span>
+					<a href="http://lesscss.org/" rel="help" target="_blank">LESS css</a>
+					<span class="separator">|</span>
+					<a href="http://docs.jquery.com/Main_Page" rel="help" target="_blank">JQuery</a>
+				</span>
+			</c:if>
+			<c:if test="${not empty footer}">
+				<jsp:invoke fragment="footer" />
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -3,19 +3,18 @@
 }
 
 
-#stf-wrapper {
-	background-color: slategray;
+#stf-viewport {
+	background-color: yellow;
 }
 
-#stf-wrapper #stf-header {
-	background-color: palevioletred;
+#stf-header {
+	background-color: teal;
 }
 
-#stf-wrapper #stf-body,
-#stf-wrapper #stf-push {
-	background-color: lightgray;
+#stf-body {
+	background-color: red;
 }
 
 #stf-footer {
-	background-color: #00c1c1;
+	background-color: teal;
 }
