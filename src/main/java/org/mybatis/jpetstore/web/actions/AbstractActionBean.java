@@ -25,24 +25,24 @@ import net.sourceforge.stripes.action.SimpleMessage;
  * @author Eduardo Macarron
  */
 abstract class AbstractActionBean implements ActionBean {
-	
+
 	private transient ActionBeanContext context;
-	
+
 
 	protected void setMessage(String value) {
 		getContext().getMessages().add(new SimpleMessage(value));
 	}
-  
+
 	@Override
 	public ActionBeanContext getContext() {
 		return context;
 	}
-	
+
 	@Override
 	public void setContext(final ActionBeanContext context) {
 		this.context = context;
 	}
-	
+
 }
 
 /* EOF */

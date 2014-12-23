@@ -25,11 +25,11 @@ import org.mybatis.jpetstore.domain.Category;
  * @author Eduardo Macarron
  */
 public interface CategoryMapper {
-	
+
 	List<Category> getCategoryList();
-	
+
 	Category getCategory(String categoryId);
-	
+
 }
 
 /* EOF */

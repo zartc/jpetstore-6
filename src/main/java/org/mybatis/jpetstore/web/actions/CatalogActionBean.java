@@ -36,8 +36,6 @@ import org.mybatis.jpetstore.web.ApplicationPaths;
 @SessionScope
 public class CatalogActionBean extends AbstractActionBean {
 	
-
-
 	@SpringBean
 	private transient CatalogService catalogService;
 	
@@ -54,6 +52,7 @@ public class CatalogActionBean extends AbstractActionBean {
 	private String itemId;
 	private Item item;
 	private List<Item> itemList;
+	
 	
 	public String getKeyword() {
 		return keyword;
@@ -145,6 +144,7 @@ public class CatalogActionBean extends AbstractActionBean {
 			productList = catalogService.getProductListByCategory(categoryId);
 			category = catalogService.getCategory(categoryId);
 		}
+
 		return new ForwardResolution(ApplicationPaths.VIEW_CATEGORY);
 	}
 	
@@ -153,6 +153,7 @@ public class CatalogActionBean extends AbstractActionBean {
 			itemList = catalogService.getItemListByProduct(productId);
 			product = catalogService.getProduct(productId);
 		}
+
 		return new ForwardResolution(ApplicationPaths.VIEW_PRODUCT);
 	}
 	
@@ -167,11 +168,11 @@ public class CatalogActionBean extends AbstractActionBean {
 			setMessage("Please enter a keyword to search for, then press the search button.");
 			return new ForwardResolution(ApplicationPaths.ERROR);
 		}
-
+		
 		productList = catalogService.searchProductList(keyword.toLowerCase());
 		return new ForwardResolution(ApplicationPaths.SEARCH_PRODUCTS);
 	}
-
+	
 	public void clear() {
 		keyword = null;
 		

@@ -25,13 +25,13 @@ import org.mybatis.jpetstore.domain.Product;
  * @author Eduardo Macarron
  */
 public interface ProductMapper {
-	
+
 	List<Product> getProductListByCategory(String categoryId);
-	
+
 	Product getProduct(String productId);
-	
+
 	List<Product> searchProductList(String keywords);
-	
+
 }
 
 /* EOF */

@@ -38,18 +38,16 @@ import org.mybatis.jpetstore.web.ApplicationPaths;
 @SessionScope
 public class OrderActionBean extends AbstractActionBean {
 
-
-	
 	private static final List<String> CARD_TYPE_LIST;
-	
+
 	@SpringBean
 	private transient OrderService orderService;
-	
+
 	private Order order = new Order();
 	private boolean shippingAddressRequired;
 	private boolean confirmed;
 	private List<Order> orderList;
-	
+
 	static {
 		List<String> cardList = new ArrayList<>();
 		cardList.add("Visa");
@@ -57,59 +55,60 @@ public class OrderActionBean extends AbstractActionBean {
 		cardList.add("American Express");
 		CARD_TYPE_LIST = Collections.unmodifiableList(cardList);
 	}
-	
+
+
 	public int getOrderId() {
 		return order.getOrderId();
 	}
-	
+
 	public void setOrderId(int orderId) {
 		order.setOrderId(orderId);
 	}
-	
+
 	public Order getOrder() {
 		return order;
 	}
-	
+
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
+
 	public boolean isShippingAddressRequired() {
 		return shippingAddressRequired;
 	}
-	
+
 	public void setShippingAddressRequired(boolean shippingAddressRequired) {
 		this.shippingAddressRequired = shippingAddressRequired;
 	}
-	
+
 	public boolean isConfirmed() {
 		return confirmed;
 	}
-	
+
 	public void setConfirmed(boolean confirmed) {
 		this.confirmed = confirmed;
 	}
-	
+
 	public List<String> getCreditCardTypes() {
 		return CARD_TYPE_LIST;
 	}
-	
+
 	public List<Order> getOrderList() {
 		return orderList;
 	}
-	
+
 	public Resolution listOrders() {
 		HttpSession session = getContext().getRequest().getSession();
 		AccountActionBean accountBean = (AccountActionBean)session.getAttribute("/actions/Account.action");
 		orderList = orderService.getOrdersByUsername(accountBean.getAccount().getUsername());
 		return new ForwardResolution(ApplicationPaths.LIST_ORDERS);
 	}
-	
+
 	public Resolution newOrderForm() {
 		HttpSession session = getContext().getRequest().getSession();
 		AccountActionBean accountBean = (AccountActionBean)session.getAttribute("/actions/Account.action");
 		CartActionBean cartBean = (CartActionBean)session.getAttribute("/actions/Cart.action");
-		
+
 		clear();
 		if (accountBean == null || !accountBean.isAuthenticated()) {
 			setMessage("You must sign on before attempting to check out.  Please sign on and try checking out again.");
@@ -124,10 +123,10 @@ public class OrderActionBean extends AbstractActionBean {
 			return new ForwardResolution(ApplicationPaths.ERROR);
 		}
 	}
-	
+
 	public Resolution newOrder() {
 		HttpSession session = getContext().getRequest().getSession();
-		
+
 		if (shippingAddressRequired) {
 			shippingAddressRequired = false;
 			return new ForwardResolution(ApplicationPaths.SHIPPING);
@@ -147,17 +146,15 @@ public class OrderActionBean extends AbstractActionBean {
 			return new ForwardResolution(ApplicationPaths.ERROR);
 		}
 	}
-	
+
 	public Resolution viewOrder() {
 		HttpSession session = getContext().getRequest().getSession();
-		
+
 		AccountActionBean accountBean = (AccountActionBean)session.getAttribute("accountBean");
-		
+
 		order = orderService.getOrder(order.getOrderId());
-		
-		if (accountBean.getAccount().getUsername().equals(order.getUsername())) {
-			return new ForwardResolution(ApplicationPaths.VIEW_ORDER);
-		}
+
+		if (accountBean.getAccount().getUsername().equals(order.getUsername())) { return new ForwardResolution(ApplicationPaths.VIEW_ORDER); }
 
 		order = null;
 		setMessage("You may only view your own orders.");
@@ -170,7 +167,7 @@ public class OrderActionBean extends AbstractActionBean {
 		confirmed = false;
 		orderList = null;
 	}
-	
+
 }
 
 /* EOF */

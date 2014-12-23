@@ -38,8 +38,10 @@ public class CatalogService {
 	
 	@Inject
 	private CategoryMapper categoryMapper;
+
 	@Inject
 	private ItemMapper itemMapper;
+
 	@Inject
 	private ProductMapper productMapper;
 	
@@ -65,6 +67,7 @@ public class CatalogService {
 		for (String keyword : keywords.split("\\s+")) {
 			products.addAll(productMapper.searchProductList("%" + keyword.toLowerCase() + "%"));
 		}
+
 		return products;
 	}
 	
@@ -79,6 +82,7 @@ public class CatalogService {
 	public boolean isItemInStock(String itemId) {
 		return itemMapper.getInventoryQuantity(itemId) > 0;
 	}
+
 }
 
 /* EOF */

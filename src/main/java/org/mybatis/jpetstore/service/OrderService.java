@@ -42,12 +42,16 @@ public class OrderService {
 	
 	@Inject
 	private ItemMapper itemMapper;
+
 	@Inject
 	private OrderMapper orderMapper;
+
 	@Inject
 	private SequenceMapper sequenceMapper;
+
 	@Inject
 	private LineItemMapper lineItemMapper;
+	
 	
 	@Transactional
 	public void insertOrder(Order order) {
@@ -93,9 +97,7 @@ public class OrderService {
 	public int getNextId(String name) {
 		Sequence sequence = new Sequence(name, -1);
 		sequence = sequenceMapper.getSequence(sequence);
-		if (sequence == null) {
-			throw new RuntimeException("Error: A null sequence was returned from the database (could not get next " + name + " sequence).");
-		}
+		if (sequence == null) { throw new RuntimeException("Error: A null sequence was returned from the database (could not get next " + name + " sequence)."); }
 		Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
 		sequenceMapper.updateSequence(parameterObject);
 		return sequence.getNextId();

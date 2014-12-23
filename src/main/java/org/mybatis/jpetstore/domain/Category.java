@@ -23,7 +23,6 @@ import java.io.Serializable;
  * @author Eduardo Macarron
  */
 public class Category implements Serializable {
-	
 	private static final long serialVersionUID = 3992469837058393712L;
 	
 	private String categoryId;

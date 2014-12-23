@@ -23,7 +23,6 @@ import java.io.Serializable;
  * @author Eduardo Macarron
  */
 public class Sequence implements Serializable {
-	
 	private static final long serialVersionUID = 8278780133180137281L;
 	
 	private String name;
