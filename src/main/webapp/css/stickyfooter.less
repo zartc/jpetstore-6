@@ -1,0 +1,32 @@
+/* 50px for the top bar itself + 1px for the shadow */
+@topbarHeight:			40px + 1;
+@footerHeight:			25px;
+
+html, body {
+	height:				100%;
+	margin:				0;
+}
+
+#stf-wrapper {
+	position:			relative;
+	min-height:			100%;
+
+	#stf-header {
+		padding-top:	@topbarHeight;
+		
+/* 		&:first-child { */
+/* 			padding-top:0; */
+/* 		} */
+	}
+
+	#stf-body {
+		padding-bottom:	@footerHeight;
+	}
+
+	#stf-footer {
+		position:		absolute;
+		bottom:			0;
+		width:			100%;
+		height:			@footerHeight;
+	}
+}

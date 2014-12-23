@@ -1,0 +1,21 @@
+#body-content {
+	background-color: white;
+}
+
+
+#stf-wrapper {
+	background-color: slategray;
+}
+
+#stf-wrapper #stf-header {
+	background-color: palevioletred;
+}
+
+#stf-wrapper #stf-body,
+#stf-wrapper #stf-push {
+	background-color: lightgray;
+}
+
+#stf-footer {
+	background-color: #00c1c1;
+}
