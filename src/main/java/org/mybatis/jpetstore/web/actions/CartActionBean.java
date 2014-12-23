@@ -38,13 +38,12 @@ import org.mybatis.jpetstore.web.ApplicationPaths;
 @SessionScope
 public class CartActionBean extends AbstractActionBean {
 	
-
-
 	@SpringBean
 	private transient CatalogService catalogService;
 	
 	private Cart cart = new Cart();
 	private String workingItemId;
+	
 	
 	public Cart getCart() {
 		return cart;

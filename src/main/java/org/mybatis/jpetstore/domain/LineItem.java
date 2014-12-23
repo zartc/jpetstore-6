@@ -24,7 +24,6 @@ import java.math.BigDecimal;
  * @author Eduardo Macarron
  */
 public class LineItem implements Serializable {
-	
 	private static final long serialVersionUID = 6804536240033522156L;
 	
 	private int orderId;

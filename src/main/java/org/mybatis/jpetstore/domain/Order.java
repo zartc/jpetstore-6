@@ -28,7 +28,6 @@ import java.util.List;
  * @author Eduardo Macarron
  */
 public class Order implements Serializable {
-	
 	private static final long serialVersionUID = 6321792448424424931L;
 	
 	private int orderId;
@@ -276,7 +275,6 @@ public class Order implements Serializable {
 	}
 	
 	public void initOrder(Account account, Cart cart) {
-		
 		username = account.getUsername();
 		orderDate = new Date();
 		
