@@ -6,7 +6,7 @@
 	the page body is passed inside the jsp:body tag --%>
 	
 <my:genericpage title="the title">
-	<jsp:attribute name="header">
+	<jsp:attribute name="pageheader">
 		<h1>I'm the HEADER of the page</h1>
 	</jsp:attribute>
 	<jsp:body>
