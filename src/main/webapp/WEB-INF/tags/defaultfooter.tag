@@ -1,8 +1,5 @@
 <%@ tag pageEncoding="UTF-8" body-content="scriptless" %>
 
-<!DOCTYPE html>
-<html>
-
 <style>
 	#stf-footer {
 		background-color: yellowgreen;
@@ -17,7 +14,7 @@
 	}
 </style>
 
-<span class="linkbar">
+<nav class="linkbar">
 	<a href="http://www.w3schools.com/html/default.asp" rel="help" target="_blank">w3schools</a>
 	<span class="separator">|</span>
 	<a href="http://en.wikipedia.org/wiki/Web_colors" rel="help" target="_blank">Web-colors</a>
@@ -29,5 +26,4 @@
 	<a href="http://docs.jquery.com/Main_Page" rel="help" target="_blank">JQuery</a>
 	<span class="separator">|</span>
 	<a href="http://wiki.sitemesh.org/wiki/display/sitemesh3/Home" rel="help" target="_blank">SiteMesh 3</a>
-</span>
-</html>
+</nav>

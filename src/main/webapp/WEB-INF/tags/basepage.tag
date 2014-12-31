@@ -1,6 +1,6 @@
 <%@ tag pageEncoding="UTF-8" body-content="scriptless" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="jpetstore" tagdir="/WEB-INF/tags"%>
 
 <%@ attribute name="title" fragment="false" %>
 <%@ attribute name="navbartop" fragment="true" %>
@@ -56,7 +56,7 @@
 		<div id="pagefooter" class="container">
 			<jsp:invoke fragment="pagefooter" />
 			<c:if test="${empty pagefooter}">
-				<my:defaultfooter />
+				<jpetstore:defaultfooter />
 			</c:if>
 		</div>
 	</div>

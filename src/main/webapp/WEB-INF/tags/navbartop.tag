@@ -4,9 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
-<!DOCTYPE html>
-<html>
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -27,7 +24,7 @@
 					<li class="normal">
 						<stripes:link beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean" event="viewCategory">
 							<stripes:param name="categoryId" value="${item}" />
-							${fn:toUpperCase(fn:substring(item, 0, 1))}${fn:toLowerCase(fn:substring(item, 1, -1))}
+							${fn:toUpperCase(fn:toUpperCase(fn:substring(item, 0, 1)))}${fn:toLowerCase(fn:substring(item, 1, -1))}
 						</stripes:link>
 					</li>
 				</c:forTokens>
@@ -72,5 +69,3 @@
 		</div>
 	</div>
 </nav>
-
-</html>
