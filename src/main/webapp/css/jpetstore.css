@@ -80,15 +80,15 @@ th {
   background-color: #e2e2e2;
 }
 
-a, a:visited, a:link {
-  color: #039;
+/* a, a:visited, a:link { */
+/*   color: #8080ff; */
 
-  text-decoration: none;
-  font-family: helvetica, tahoma, arial, verdana, sans-serif;
-}
+/*   text-decoration: none; */
+/*   font-family: helvetica, tahoma, arial, verdana, sans-serif; */
+/* } */
 
 a:hover {
-  color: #69f;
+  color: #ff8000;
 }
 
 a.Button, a.Button:link, a.Button:visited {

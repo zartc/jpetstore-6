@@ -1,21 +1,14 @@
-<%@ tag pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="jpetstore" tagdir="/WEB-INF/tags"%>
-
-<%@ attribute name="title" fragment="false" %>
-<%@ attribute name="lessstylesheets" fragment="true" %>
-<%@ attribute name="headscripts" fragment="true" %>
-<%@ attribute name="scripts" fragment="true" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<!-- http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<sitemesh:write property="metadata" />
 
-	<title>${not empty title ? title : "JPS 6.2"}</title>
+	<title><sitemesh:write property="title" /></title>
 	
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 <!-- 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/superhero/bootstrap.min.css" /> -->
@@ -27,7 +20,7 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Grand+Hotel">
 
-	<jsp:invoke fragment="lessstylesheets" />
+	<sitemesh:write property="lessStylesheets" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.2/less.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -38,11 +31,11 @@
     <![endif]-->
 	
 	<!-- client's end of head scripts -->
-	<jsp:invoke fragment="headscripts" />
+	<sitemesh:write property="endOfHeaderScripts" />
 </head>
 
 <body>
-	<jsp:doBody />
+	<sitemesh:write property="body" />
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -59,5 +52,5 @@
 <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
 
 <!-- client's end of page script -->
-<jsp:invoke fragment="scripts" />
+<sitemesh:write property="endOfFileScripts" />
 </html>
