@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sitemesh>
 
 <sitemesh>
 	<!-- Exclude path from decoration. -->
 	
 	
-	<mapping path="/index.html" decorator="/WEB-INF/sitemesh-templates/light.jsp" />
-	<mapping path="/TestNormalTemplateAction.action" decorator="/WEB-INF/sitemesh-templates/normal.jsp" />
-	<mapping path="/*" decorator="/WEB-INF/sitemesh-templates/minimal.jsp" />
-	<mapping path="/admin/*" decorator="/WEB-INF/sitemesh-templates/admin-decorator.html"/>
+	<mapping path="/index.html"									decorator="/WEB-INF/sitemesh-templates/light.jsp" />
+	<mapping path="/actions/TestSitemeshNormalTemplate.action"	decorator="/WEB-INF/sitemesh-templates/light.jsp" />
+	<mapping path="/admin/*"									decorator="/WEB-INF/sitemesh-templates/admin-decorator.html"/>
+	
+	<mapping path="/*"											decorator="/WEB-INF/sitemesh-templates/minimal.jsp" />
+	
+<!-- 	<content-processor class=""> -->
+<!-- 		<tag-rule-bundle class="org.sitemesh.content.tagrules.html.Sm2TagRuleBundle" /> -->
+<!-- 	</content-processor> -->
 </sitemesh>

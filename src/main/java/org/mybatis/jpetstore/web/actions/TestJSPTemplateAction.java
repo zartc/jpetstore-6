@@ -4,14 +4,16 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 
+import org.mybatis.jpetstore.web.ApplicationPaths;
 
-public class GenericTemplateAction extends AbstractActionBean {
 
+public class TestJSPTemplateAction extends AbstractActionBean {
+	
 	@DefaultHandler
-	public Resolution displayGenericPage() {
-		return new ForwardResolution("/WEB-INF/jsp/templates/TestGenericPage.jsp");
+	public Resolution display() {
+		return new ForwardResolution(ApplicationPaths.TestJSPTemplate);
 	}
-
+	
 }
 
 /* EOF */
