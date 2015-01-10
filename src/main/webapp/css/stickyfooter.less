@@ -1,0 +1,35 @@
+/* 50px for the boostrap top bar + 1px for the shadow */
+@topbarHeight:			51px;
+@footerHeight:			60px;
+
+
+html, body {
+	height:				100%;
+	margin-top:			0;
+	margin-bottom:		0;
+}
+
+#stf-viewport {
+	position:			relative;
+	min-height:			100%;
+		
+	#stf-header {
+		/* prevent the header to overlap the topbar */
+		padding-top:	@topbarHeight;
+	}
+
+	#stf-body {
+		/* amenage a space buffer at the bottom of the body for the footer */
+		padding-bottom:	@footerHeight;
+	}
+
+	#stf-footer {
+		position:		absolute;
+		bottom:			0;
+		width:			100%;
+		/* prevent the footer to overlap the body */
+		height:			@footerHeight;
+		/* facilitate vertical alignement of text inside the footer */
+		line-height:	@footerHeight;
+	}
+}

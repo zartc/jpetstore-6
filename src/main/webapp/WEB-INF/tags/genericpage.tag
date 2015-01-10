@@ -1,8 +1,9 @@
-<%@ tag description="generic page template" pageEncoding="UTF-8" body-content="scriptless"%>
+<%@ tag description="generic page template" pageEncoding="UTF-8" body-content="scriptless" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ attribute name="title" fragment="false"%>
-<%@ attribute name="header" fragment="true"%>
-<%@ attribute name="footer" fragment="true"%>
+<%@ attribute name="title" fragment="false" %>
+<%@ attribute name="header" fragment="true" %>
+<%@ attribute name="footer" fragment="true" %>
 
 <%-- JSP-TEMPLATE --%>
 <%-- see: http://wiki4.caucho.com/Java_EE_Servlet_tutorial_:_Using_JSPs_to_create_header,_footer_area,_formatting,_and_basic_CSS_for_bookstore --%>
@@ -16,18 +17,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>${title}</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>${title}</title>
+	
+	<!-- begin stickyfooter -->
+	<link rel="stylesheet/less" type="text/css" href="${pageContext.request.contextPath}/css/stickyfooter.less" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.2/less.min.js"></script>
+	<!-- end stickyfooter -->
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<!-- 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/superhero/bootstrap.min.css" /> -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
 </head>
+
 <body>
-	<div id="pageheader">
-		<jsp:invoke fragment="header" />
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}">${pageContext.request.contextPath}</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="implementation-a.html">Menu 1</a></li>
+				<li class="normal"><a href="implementation-b.html">Menu 2</a></li>
+				<li class="normal"><a href="implementation-c.html">Menu 3</a></li>
+				<li class="normal"><a href="implementation-d.html">Menu 4</a></li>
+				<li class="divider-vertical"></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Debug<b class="caret"></b></a>
+					<ul class="dropdown-menu dropdown-menu-form" role="menu">
+						<li><label class="checkbox"><input id="toggleStickyfooterDebugCSS" type="checkbox" />Display debug css</label></li>
+						<li><label class="checkbox"><input id="displayCodeStruct" type="checkbox" />Display alternate content</label></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div id="pagebody">
-		<jsp:doBody />
+</nav>
+
+<div id="stf-viewport">
+	<div id="stf-header">
+		<div id="pageheader" class="container">
+			<jsp:invoke fragment="header" />
+		</div>
 	</div>
-	<div id="pagefooter">
-		<jsp:invoke fragment="footer" />
+	
+	<div id="stf-body">
+		<div id="pagebody" class="container">
+			<jsp:doBody />
+		</div>
 	</div>
+	
+	<div id="stf-footer">
+		<div id="pagefooter" class="container">
+			<c:if test="${empty footer}">
+				<style>
+					#stf-footer {
+						background-color: yellowgreen;
+					}
+					
+					#pagefooter {
+						vertical-align: middle;
+					}
+					
+					#pagefooter .linkbar .separator {
+						padding: 0 20px;
+					}
+				</style>
+				<span class="linkbar">
+					<a href="http://www.w3schools.com/html/default.asp" rel="help" target="_blank">w3schools</a>
+					<span class="separator">|</span>
+					<a href="http://en.wikipedia.org/wiki/Web_colors" rel="help" target="_blank">Web-colors</a>
+					<span class="separator">|</span>
+					<a href="http://getbootstrap.com/" rel="help" target="_blank">Bootstrap</a>
+					<span class="separator">|</span>
+					<a href="http://lesscss.org/" rel="help" target="_blank">LESS css</a>
+					<span class="separator">|</span>
+					<a href="http://docs.jquery.com/Main_Page" rel="help" target="_blank">JQuery</a>
+				</span>
+			</c:if>
+			<c:if test="${not empty footer}">
+				<jsp:invoke fragment="footer" />
+			</c:if>
+		</div>
+	</div>
+</div>
 </body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script>
+	function toggleStickyfooterDebugCSS() {
+		var name = "stickyfooter-debug";
+		var element = document.getElementById(name);
+		if(element) {
+			element.parentNode.removeChild(element);
+		}
+		else {
+			var cssNode = document.createElement("link");
+			cssNode.id = name;
+			cssNode.href = "${pageContext.request.contextPath}/css/" + name + ".css";
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.media = "screen";
+			document.getElementsByTagName("head")[0].appendChild(cssNode);
+		}
+	}
+	
+	$(function() {
+		$('#toggleStickyfooterDebugCSS').click(toggleStickyfooterDebugCSS);
+
+		if(false)  {
+			$("#toggleStickyfooterDebugCSS").click();
+		}
+	})
+</script>
 </html>
