@@ -1,6 +1,5 @@
-/* 50px for the boostrap top bar + 1px for the shadow */
-@topbarHeight:			51px;
-@footerHeight:			60px;
+@northPadding:			0px;
+@southHeight:			40px;
 
 
 html, body {
@@ -12,24 +11,24 @@ html, body {
 #stf-viewport {
 	position:			relative;
 	min-height:			100%;
-		
-	#stf-header {
-		/* prevent the header to overlap the topbar */
-		padding-top:	@topbarHeight;
+
+	#stf-north {
+		/* prevent the north to overlap the topbar */
+		padding-top:	@northPadding;
 	}
 
-	#stf-body {
-		/* amenage a space buffer at the bottom of the body for the footer */
-		padding-bottom:	@footerHeight;
+	#stf-center {
+		/* prevent the body to overlap the south */
+		padding-bottom:	@southHeight;
 	}
 
-	#stf-footer {
+	#stf-south {
 		position:		absolute;
 		bottom:			0;
 		width:			100%;
-		/* prevent the footer to overlap the body */
-		height:			@footerHeight;
-		/* facilitate vertical alignement of text inside the footer */
-		line-height:	@footerHeight;
+		/* prevent the south to overlap the body */
+		height:			@southHeight;
+		/* facilitate vertical alignement of text */
+		/*line-height:	@southHeight;*/
 	}
 }

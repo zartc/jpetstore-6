@@ -1,9 +1,7 @@
 body {
-  margin: 0ex 10ex 0ex 10ex;
-  padding: 0ex;
-  font-family: helvetica, tahoma, arial, verdana, sans-serif;
-  font-size: 2ex;
-  color: #333;
+  margin: 0 10px;
+  padding: 0;
+  color: #222;
   background-color: #444;
 }
 
@@ -81,14 +79,14 @@ th {
 }
 
 a, a:visited, a:link {
-  color: #039;
+  color: #8080ff;
 
   text-decoration: none;
   font-family: helvetica, tahoma, arial, verdana, sans-serif;
 }
 
 a:hover {
-  color: #69f;
+  color: #ff8000;
 }
 
 a.Button, a.Button:link, a.Button:visited {

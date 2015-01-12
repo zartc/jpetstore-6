@@ -1,7 +1,7 @@
 package org.mybatis.jpetstore.web;
 
 public interface ApplicationPaths {
-
+	
 	static final String ERROR = "/WEB-INF/jsp/common/Error.jsp";
 	
 	static final String NEW_ACCOUNT = "/WEB-INF/jsp/account/NewAccountForm.jsp";
@@ -22,7 +22,10 @@ public interface ApplicationPaths {
 	static final String NEW_ORDER = "/WEB-INF/jsp/order/NewOrderForm.jsp";
 	static final String SHIPPING = "/WEB-INF/jsp/order/ShippingForm.jsp";
 	static final String VIEW_ORDER = "/WEB-INF/jsp/order/ViewOrder.jsp";
-
+	
+	
+	static final String TestJSPTemplate = "/WEB-INF/jsp/test/TestJSPTemplate.jsp";
+	static final String TestStripesTemplate = "/WEB-INF/jsp/test/TestStripesTemplate.jsp";
 }
 
 /* EOF */

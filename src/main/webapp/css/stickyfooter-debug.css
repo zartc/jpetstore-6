@@ -7,14 +7,14 @@
 	background-color: yellow;
 }
 
-#stf-header {
+#stf-north {
 	background-color: teal;
 }
 
-#stf-body {
+#stf-center {
 	background-color: red;
 }
 
-#stf-footer {
+#stf-south {
 	background-color: teal;
 }
